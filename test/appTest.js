@@ -1,7 +1,7 @@
-const chai = require('chai');
+const chai   = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
-const sinon = require('sinon');
+const sinon  = require('sinon');
 const app    = require('../app');
 chai.use(require('sinon-chai'));
 //uses chai assert apis
@@ -56,6 +56,15 @@ describe('App' , function(){
             app.CallMe(callbackSpy);
             expect(callbackSpy).to.have.been.calledOnce;
             
+        });
+        
+    });  
+    describe('GetName()' , function () {
+        it('it shlould be called with name' , function () {
+            let setNameSpy = sinon.spy(app , 'GetName');
+            app.GetName('khaled');
+            expect(setNameSpy).to.have.been.calledOnce;
+            expect(setNameSpy).to.have.been.calledWith('khaled');
         });
         
     });
