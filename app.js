@@ -13,5 +13,8 @@ module.exports = {
     },
     GetName:function(name){
         this.name = name;
+    },
+    CallMe:function (callback) {
+        callback();
     }
 }

@@ -1,12 +1,17 @@
-const assert = require('chai').assert;
-const expect = require('chai').expect;
+const chai = require('chai');
+const assert = chai.assert;
+const expect = chai.expect;
+const sinon = require('sinon');
 const app    = require('../app');
+chai.use(require('sinon-chai'));
 //uses chai assert apis
 //['exists' , 'equal' , 'typeOf', 'isString' , 'isObject' , 'isArray']
 
-//uses chau expect apis
+//uses chai expect apis
 //['expect']
 
+//uses Sinon
+//['spy']
 describe('App' , function(){
     describe('SayHello()' , function () {
         it('SayHello should return exist value' , function(){
@@ -37,12 +42,21 @@ describe('App' , function(){
             let result = app.GetSelection();
             assert.isObject( result );
          });
-    });
+    });chai.use(require('sinon-chai'));
     describe('GetMyteam()' , function () {
         it('GetMyteam should return Array' , function(){
             let result = app.GetMyteam();
             assert.isArray( result );
      
          });
+    });
+    describe('CallMe()' , function () {
+        it('it shlould call callback function once' , function () {
+            let callbackSpy = sinon.spy();
+            app.CallMe(callbackSpy);
+            expect(callbackSpy).to.have.been.calledOnce;
+            
+        });
+        
     });
 });
