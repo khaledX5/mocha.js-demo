@@ -42,7 +42,7 @@ describe('App' , function(){
             let result = app.GetSelection();
             assert.isObject( result );
          });
-    });chai.use(require('sinon-chai'));
+    });
     describe('GetMyteam()' , function () {
         it('GetMyteam should return Array' , function(){
             let result = app.GetMyteam();
